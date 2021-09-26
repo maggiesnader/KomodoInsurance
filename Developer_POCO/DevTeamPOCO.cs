@@ -7,7 +7,6 @@ using Developer_POCO;
 
 namespace KomodoInsurance_POCO
 {
-
     public class DevTeam : Developer
     {
         public DevTeam() { }

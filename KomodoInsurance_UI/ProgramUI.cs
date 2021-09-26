@@ -41,9 +41,9 @@ namespace KomodoInsurance_UI
         {
             Console.WriteLine("Komodo Insurance Team Management\n" +
                 "Select a Menu Option:\n" +
-                "1. Add individuals\n" +
-                "2. Remove individuals\n" +
-                "3. Search for individuals\n");
+                "1. Add\n" +
+                "2. Remove\n" +
+                "3. Search\n");
         }
 
         //Main Menu - Evaluate user input and act accordingly
@@ -300,16 +300,23 @@ namespace KomodoInsurance_UI
         private void RemoveDeveloperFromTeam()
         {
             Console.Clear();
-            SearchById();
-            //Console.WriteLine("Enter the Employee ID of the Developer you would like to remove from a list:\n");
-            int userInput = int.Parse(Console.ReadLine());
-
-            DevTeam newDeveloper = new DevTeam();
-
-            //Console.WriteLine("Enter the Team Name that the Developer needs to be removed from:\n");
-            //string userInputTeamName = Console.ReadLine();
-            newDeveloper.TeamName = null;
+            //Get 
+            Console.WriteLine("\nEnter the Employee ID of the developer you would like to remove from a team:\n");
+            string developerString = Console.ReadLine();
+            //int developerInt = int.Parse(developerString);
+            Developer developer = developerString;
+            //Call the delete method
+            bool wasDeleted = DevTeam.RemoveDevTeamDeveloper(developerString);
+            if (wasDeleted)
+            {
+                Console.WriteLine("The developer was successfully deleted.");
+            }
+            else
+            {
+                Console.WriteLine("The developer could not be deleted.");
+            }
         }
+        
 
 
 

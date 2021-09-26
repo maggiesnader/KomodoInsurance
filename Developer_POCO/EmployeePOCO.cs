@@ -9,7 +9,7 @@ using Developer_POCO;
 
 namespace KomodoInsurance_POCO
 {
-    public class Employee
+    public class Employee 
     {
         public Employee() { }
 
