@@ -57,16 +57,17 @@ namespace KomodoInsurance_UI
                     AddMenuOptions();
                     break;
                 case "2":
-                    //remove individuals
+                    RemoveMenuDisplay();
+                    RemoveMenuOptions();
                     break;
                 case "3":
-                    //search for individuals
+                    SearchMenuDisplay();
+                    SearchMenuOptions();
                     break;
             }
         }
 
-        //Add Individuals Menu
-        //Display options to user
+        //Add Menu - Display options to user
         private void AddMenuDisplay()
         {
             Console.WriteLine("Komodo Insurance Team Management\n" +
@@ -102,7 +103,7 @@ namespace KomodoInsurance_UI
             }
         }
 
-        //create employee
+        //Add Menu - create employee
         private void CreateNewEmployee()
         {
             Console.Clear();
@@ -147,7 +148,7 @@ namespace KomodoInsurance_UI
             newEmployee.NameOfDepartment = (Department)departmentInt;
         }
 
-        //create developer
+        //Add Menu - create developer
         private void CreateNewDeveloper()
         {
             Console.Clear();
@@ -229,7 +230,7 @@ namespace KomodoInsurance_UI
 
         }
 
-        //create devteam
+        //Add Menu - create devteam
         private void CreateNewDevTeam()
         {
             Console.Clear();
@@ -253,15 +254,113 @@ namespace KomodoInsurance_UI
             //ADD THIS AFTER YOU  MAKE THE SEARCH METHODS!!!!
             Console.WriteLine("Add Developers to team:\n" +
                 "Enter the Employee ID of the Developers you would like to Add;");
+        }
 
+        //***Add Menu - add developer to team
+        //ADD THIS AFTER YOU  MAKE THE SEARCH METHODS!!??
+
+
+
+        //Remove Menu - Display options to user
+        private void RemoveMenuDisplay()
+        {
+            Console.WriteLine("Komodo Insurance Team Management\n" +
+                "Remove Individuals\n" +
+                "Select a Menu Option:" +
+                /*"1. Remove Employee\n" +
+                "2. Remove Developer\n" +
+                "3. Remove DevTeam\n" +*/
+                "4. Remove Developer from Team");
+        }
+
+        //***Remove Menu - Evaluate user input and act accordingly
+        private void RemoveMenuOptions()
+        {
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                //case "1":
+                    //remove employee
+                   // break;
+               // case "2":
+                    //remove developer
+                   // break;
+                //case "3":
+                    //remove devteam
+                    //break;
+                case "4":
+                    RemoveDeveloperFromTeam();
+                    break;
+            }
+        }
+        //Remove Menu - Remove employee
+        //Remove Menu - Remove developer
+        //Remove Menu - RemoveDevTeam
+        //***Remove Menu - Remove developer from team
+        private void RemoveDeveloperFromTeam()
+        {
+            Console.Clear();
+            SearchById();
+            //Console.WriteLine("Enter the Employee ID of the Developer you would like to remove from a list:\n");
+            int userInput = int.Parse(Console.ReadLine());
+
+            DevTeam newDeveloper = new DevTeam();
+
+            //Console.WriteLine("Enter the Team Name that the Developer needs to be removed from:\n");
+            //string userInputTeamName = Console.ReadLine();
+            newDeveloper.TeamName = null;
+        }
+
+
+
+
+        //
+        //Search for Individuals Menu - Display options to user
+        private void SearchMenuDisplay()
+        {
+            Console.WriteLine("Komodo Insurance Team Management\n" +
+                "Search for Individuals\n" +
+                "Select a Menu Option:" +
+                "1. Search for Developer by ID");
+        }
+        //Search Menu - Evaluate user input and act accordingly
+        private void SearchMenuOptions()
+        {
+            string userInput = Console.ReadLine();
+            switch (userInput)
+            {
+                case "1":
+                    SearchById();
+                    break;
+            }
+        }
+
+        //Search Menu - Search for developer by Id
+        private void SearchById()
+        {
+            Console.Clear();
+            //Promt user for Id
+            Console.WriteLine("Enter the Employee ID of the Developer:\n");
+            //Get input
+            int userInput = int.Parse(Console.ReadLine());
+            //Find developer by that Id
+            Developer developer = _developerRepo.GetDeveloperByEmployeeId(userInput);
+            //Display if not null
+            if (developer != null)
+            {
+                Console.WriteLine($"Name: {developer.Name}\n" +
+                    $"ID: {developer.ID}");
+            }
+            else
+            {
+                Console.WriteLine("There is no developer with that ID.");
+            }
 
         }
 
-        //add developer to team
-        //ADD THIS AFTER YOU  MAKE THE SEARCH METHODS!!!!
-
-        //Remove Individuals Menu
-        //Search for Individuals Menu
+        //Search Menu - Search by
+        //Search Menu - Search by
+        //Search Menu - Search by
 
 
 
