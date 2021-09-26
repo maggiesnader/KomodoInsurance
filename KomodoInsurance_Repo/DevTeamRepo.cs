@@ -11,6 +11,7 @@ namespace KomodoInsurance_Repo
     {
         private List<DevTeam> _ListOfDevTeams = new List<DevTeam>();
         private int _idCounter = default;
+        private DevTeam _devTeam = new DevTeam();
        
         //Create
         public bool AddDevTeamToList(DevTeam devTeamToBeAdded)
@@ -105,6 +106,28 @@ namespace KomodoInsurance_Repo
             _ListOfDevTeams.Remove(devTeam);
 
             if (initialCount > _ListOfDevTeams.Count)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool AddDevTeamDeveloper(Developer UpdatedTeamMember)
+        {
+            int initialCount = _devTeam.TeamMembers.Count;
+            _devTeam.TeamMembers.Add(UpdatedTeamMember);
+            if (initialCount < _devTeam.TeamMembers.Count)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveDevTeamDeveloper(Developer UpdatedTeamMember)
+        {
+            int initialCount = _devTeam.TeamMembers.Count;
+            _devTeam.TeamMembers.Remove(UpdatedTeamMember);
+            if (initialCount > _devTeam.TeamMembers.Count)
             {
                 return true;
             }

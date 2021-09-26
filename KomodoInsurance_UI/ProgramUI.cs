@@ -99,6 +99,7 @@ namespace KomodoInsurance_UI
                     break;
                 case "4":
                     //add developer to team
+                    AddDeveloperToTeam();
                     break;
             }
         }
@@ -257,7 +258,25 @@ namespace KomodoInsurance_UI
         }
 
         //***Add Menu - add developer to team
-        //ADD THIS AFTER YOU  MAKE THE SEARCH METHODS!!??
+        private void AddDeveloperToTeam()
+        {
+            Console.Clear();
+            //Get
+            Console.WriteLine("Enter the Employee Id of the developer you would like to add to a team: \n");
+            int developerString = int.Parse(Console.ReadLine());
+            Developer result = _developerRepo.GetDeveloperByEmployeeId(developerString);
+
+            //Call the Add Method
+            bool wasAdded = _devTeamRepo.AddDevTeamDeveloper(result);
+            if (wasAdded)
+            {
+                Console.WriteLine("The developer was successfully added.");
+            }
+            else
+            {
+                Console.WriteLine("The developer could not be added. ");
+            }
+        }
 
 
 
@@ -296,17 +315,19 @@ namespace KomodoInsurance_UI
         //Remove Menu - Remove employee
         //Remove Menu - Remove developer
         //Remove Menu - RemoveDevTeam
+
+
         //***Remove Menu - Remove developer from team
         private void RemoveDeveloperFromTeam()
         {
             Console.Clear();
             //Get 
             Console.WriteLine("\nEnter the Employee ID of the developer you would like to remove from a team:\n");
-            string developerString = Console.ReadLine();
-            //int developerInt = int.Parse(developerString);
-            Developer developer = developerString;
+            int developerString = int.Parse(Console.ReadLine());
+            Developer result = _developerRepo.GetDeveloperByEmployeeId(developerString);
+
             //Call the delete method
-            bool wasDeleted = DevTeam.RemoveDevTeamDeveloper(developerString);
+            bool wasDeleted = _devTeamRepo.RemoveDevTeamDeveloper(result);
             if (wasDeleted)
             {
                 Console.WriteLine("The developer was successfully deleted.");

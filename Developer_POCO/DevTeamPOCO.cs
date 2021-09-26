@@ -30,26 +30,6 @@ namespace KomodoInsurance_POCO
         public TeamType TypeOfTeam { get; set; }
         public List<Developer> TeamMembers { get; set; }
 
-        public bool AddDevTeamDeveloper(Developer UpdatedTeamMember)
-        {
-            int initialCount = this.TeamMembers.Count;
-            this.TeamMembers.Add(UpdatedTeamMember);
-            if (initialCount < this.TeamMembers.Count)
-            {
-                return true;
-            }
-            return false;
-        }
-
-        public bool RemoveDevTeamDeveloper(Developer UpdatedTeamMember)
-        {
-            int initialCount = this.TeamMembers.Count;
-            this.TeamMembers.Remove(UpdatedTeamMember);
-            if (initialCount > this.TeamMembers.Count)
-            {
-                return true;
-            }
-            return false;
-        }
+        
     }
 }
